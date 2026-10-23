@@ -116,18 +116,15 @@ void updateDisplay() {
 
   lcd.clear();
 
-  // row 1 = CO2
   snprintf(line, sizeof(line), "CO2: %d ppm", co2);
   lcd.setCursor(0, 0);
   lcd.print(line);
 
-  // row 2 = temp + hum
   dtostrf(temperature, 0, 1, tempStr);
   snprintf(line, sizeof(line), "T: %s C   H: %d %%", tempStr, (int)humidity);
   lcd.setCursor(0, 1);
   lcd.print(line);
 
-  // row 3 = window status
   lcd.setCursor(0, 2);
   if (winState == WIN_OPEN) {
     lcd.print("Window: OPEN");
@@ -135,7 +132,6 @@ void updateDisplay() {
     lcd.print("Window: CLOSED");
   }
 
-  // row 4 = reason
   lcd.setCursor(0, 3);
   snprintf(line, sizeof(line), "Reason: %s", reasonText(openReason));
   lcd.print(line);
